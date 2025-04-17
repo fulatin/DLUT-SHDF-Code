@@ -8,11 +8,9 @@ set(PUBLIC_HEADER
 
 if(DEFINED CONFIG_ENABLE_EXPERIMENT_3)
     add_subdirectory_if_exist(experiment3)
-    
 endif()
 if(DEFINED CONFIG_ENABLE_EXPERIMENT_4)
-    add_subdirectory_if_exist(experiment4)
-    
+    add_subdirectory_if_exist(experiment4) 
 endif()
 
 add_subdirectory_if_exist(custom)

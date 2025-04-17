@@ -5,9 +5,9 @@
 #include "osal_addr.h"
 #include "osal_debug.h"
 #include "osal_task.h"
-#define TIMER_TASK_PRIO 23
-#define TIMER_TASK_STACK_SIZE 1000
-static int work3_task(const char *arg) {
+#define EXP4_TASK_PRIO 23
+#define EXP4_TASK_STACK_SIZE 1000
+static int exp4_task(const char *arg) {
   unused(arg);
   bh1750_init();
 
@@ -23,18 +23,17 @@ static int work3_task(const char *arg) {
   return 0;
 }
 
-static void timer_entry(void) {
+static void exp4_entry(void) {
   osal_task *task_handle = NULL;
   osal_kthread_lock();
-  osal_printk("Timer task starting");
-  task_handle = osal_kthread_create((osal_kthread_handler)work3_task, 0,
-                                    "work3", TIMER_TASK_STACK_SIZE);
+  task_handle = osal_kthread_create((osal_kthread_handler)exp4_task, 0,
+                      "exp4", EXP4_TASK_STACK_SIZE);
   if (task_handle != NULL) {
-    osal_kthread_set_priority(task_handle, TIMER_TASK_PRIO);
+    osal_kthread_set_priority(task_handle, EXP4_TASK_PRIO);
     osal_kfree(task_handle);
   }
   osal_kthread_unlock();
 }
 
 /* Run the timer_entry. */
-app_run(timer_entry);
+app_run(exp4_entry);

@@ -15,8 +15,8 @@
 #include <systick.h>
 #include <timer.h>
 #include <watchdog.h>
-#define TIMER_TASK_STACK_SIZE 1000
-#define TIMER_TASK_PRIO 10
+#define EXP3_TASK_STACK_SIZE 1000
+#define EXP3_TASK_PRIO 10
 
 #define CONFIG_I2C_SCL_MASTER_PIN 15
 #define CONFIG_I2C_SDA_MASTER_PIN 16
@@ -24,7 +24,7 @@
 #define I2C_MASTER_ADDR 0x1
 
 #define I2C_SET_BANDRATE 115200
-static int work3_task(const char *arg) {
+static int exp3_task(const char *arg) {
 
   unused(arg);
 
@@ -41,7 +41,6 @@ static int work3_task(const char *arg) {
 
   ssd1306_Init();
   while (1) {
-    osal_printk("this is exp3\n");
     // ssd1306_DrawRectangle(0, 0, 30, 30, 0x01);
     // ssd1306_Fill(0x00);
     // ssd1306_SetCursor(0, 0);
@@ -58,18 +57,18 @@ static int work3_task(const char *arg) {
   return 0;
 }
 
-static void timer_entry(void) {
+static void exp3_entry(void) {
   osal_task *task_handle = NULL;
   osal_kthread_lock();
   osal_printk("Timer task starting");
-  task_handle = osal_kthread_create((osal_kthread_handler)work3_task, 0,
-                                    "work3", TIMER_TASK_STACK_SIZE);
+  task_handle = osal_kthread_create((osal_kthread_handler)exp3_task, 0,
+                                    "exp3", EXP3_TASK_STACK_SIZE);
   if (task_handle != NULL) {
-    osal_kthread_set_priority(task_handle, TIMER_TASK_PRIO);
+    osal_kthread_set_priority(task_handle, EXP3_TASK_PRIO);
     osal_kfree(task_handle);
   }
   osal_kthread_unlock();
 }
 
 /* Run the timer_entry. */
-app_run(timer_entry);
+app_run(exp3_entry);
