@@ -237,4 +237,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-/src/output/
+/src/output/*
+/src/interim_binary/*
