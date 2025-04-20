@@ -74,6 +74,20 @@
 # if ENABLE_NFC_SAMPLE
 # osource "application/samples/nfc/Kconfig"
 # endif
+
+
+config ENABLE_EXPERIMENT_1
+    bool
+    prompt "Enable experiment 1"
+    default n
+    depends on COURSE_EXPERIMENT_ENABLE
+    help
+        This enable the suppert for experiment 1
+
+if ENABLE_EXPERIMENT_1
+osource "application/course_experiment/experiment1/Kconfig"
+endif
+
 config ENABLE_EXPERIMENT_3
     bool
     prompt "Enable experiment 3"

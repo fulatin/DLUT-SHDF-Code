@@ -5,7 +5,9 @@ set(SOURCES
 
 set(PUBLIC_HEADER
 )
-
+if(DEFINED CONFIG_ENABLE_EXPERIMENT_1)
+    add_subdirectory_if_exist(experiment1)
+endif()
 if(DEFINED CONFIG_ENABLE_EXPERIMENT_3)
     add_subdirectory_if_exist(experiment3)
 endif()

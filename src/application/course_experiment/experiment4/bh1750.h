@@ -4,6 +4,8 @@
 #include "hal_gpio.h"
 #include "app_init.h"
 #define BH1750_ADDR 0x46
+
+// cmd
 #define BH1750_POWER_OFF 0x00
 #define BH1750_POWER_ON 0x01
 #define BH1750_MODULE_RESET 0x07
