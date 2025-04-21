@@ -238,4 +238,3 @@ cython_debug/
 .pypirc
 
 /src/output/*
-/src/interim_binary/*
