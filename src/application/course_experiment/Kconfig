@@ -110,3 +110,27 @@ config ENABLE_EXPERIMENT_4
 if ENABLE_EXPERIMENT_4
 osource "application/course_experiment/experiment4/Kconfig"
 endif
+
+
+config ENABLE_EXPERIMENT_5
+    bool
+    prompt "Enable experiment 5"
+    default n
+    depends on COURSE_EXPERIMENT_ENABLE
+    help
+        This enable the suppert for experiment 5
+
+if ENABLE_EXPERIMENT_5
+osource "application/course_experiment/experiment5/Kconfig"
+endif
+config ENABLE_EXPERIMENT_5_1
+    bool
+    prompt "Enable experiment 5_1"
+    default n
+    depends on COURSE_EXPERIMENT_ENABLE
+    help
+        This enable the suppert for experiment 5_1
+
+if ENABLE_EXPERIMENT_5_1
+osource "application/course_experiment/experiment5_1/Kconfig"
+endif

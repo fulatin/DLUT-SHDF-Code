@@ -60,13 +60,19 @@ void gpio_callback_func(pin_t pin, uintptr_t param) {
     }
   }
   if (!(*(rx3_buff + 1) & 0x04)) {
+    ssd1306_Fill(0x00);
+    ssd1306_ClearOLED();
+    ssd1306_SetCursor(0, 0);
+    ssd1306_printf("middle button\n");
+    ssd1306_UpdateScreen();
+
     BUT = 1;
   }
   if (!(*(rx3_buff + 1) & 0x08)) {
     ssd1306_Fill(0x00);
     ssd1306_ClearOLED();
     ssd1306_SetCursor(0, 0);
-    ssd1306_printf("button left\n");
+    ssd1306_printf("left button\n");
     ssd1306_UpdateScreen();
     BUT = 2;
   }
@@ -74,7 +80,7 @@ void gpio_callback_func(pin_t pin, uintptr_t param) {
     ssd1306_Fill(0x00);
     ssd1306_SetCursor(0, 0);
     ssd1306_ClearOLED();
-    ssd1306_printf("button right\n");
+    ssd1306_printf("right button\n");
     ssd1306_UpdateScreen();
     BUT = 3;
   }
