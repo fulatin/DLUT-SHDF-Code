@@ -19,7 +19,6 @@ static timer_handle_t tmh;
 static void my_timer_callback(uintptr_t data) {
   unused(data);
   second++;
-
   uapi_timer_start(tmh, TIMER_DURIATION, my_timer_callback, 0);
 }
 

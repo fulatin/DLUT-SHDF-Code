@@ -14,16 +14,15 @@ endif()
 if(DEFINED CONFIG_ENABLE_EXPERIMENT_4)
     add_subdirectory_if_exist(experiment4) 
 endif()
-
-
 if(DEFINED CONFIG_ENABLE_EXPERIMENT_5)
     add_subdirectory_if_exist(experiment5) 
 endif()
-
 if(DEFINED CONFIG_ENABLE_EXPERIMENT_5_1)
     add_subdirectory_if_exist(experiment5_1) 
 endif()
-
+if(DEFINED CONFIG_ENABLE_EXPERIMENT_6)
+    add_subdirectory_if_exist(experiment6) 
+endif()
 add_subdirectory_if_exist(custom)
 
 set(PRIVATE_HEADER
